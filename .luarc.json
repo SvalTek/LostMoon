@@ -1,0 +1,10 @@
+{
+    "workspace.library": [
+        "./.lua-meta",
+        "c:\\Users\\Theros\\.vscode\\extensions\\droidxrx.cheat-engine-lua-intellisense-0.0.3\\meta"
+    ],
+    "diagnostics.disable": [
+        "inject-field"
+    ],
+    "diagnostics.globals": []
+}

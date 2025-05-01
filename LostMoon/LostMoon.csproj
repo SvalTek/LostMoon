@@ -1,0 +1,71 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <AssemblyName>LostMoon</AssemblyName>
+    <Description>Displays player's coordinates</Description>
+    <Version>1.0.1</Version>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <LangVersion>latest</LangVersion>
+
+	<WildSkiesRootDir>G:\SteamLibrary\SteamApps\common\Wild Skies</WildSkiesRootDir>
+	  
+    <RestoreAdditionalProjectSources>
+      https://api.nuget.org/v3/index.json;
+      https://nuget.bepinex.dev/v3/index.json;
+      https://nuget.samboy.dev/v3/index.json
+    </RestoreAdditionalProjectSources>
+    <RootNamespace>LostMoon</RootNamespace>
+  </PropertyGroup>
+	
+	
+  <ItemGroup>
+    <PackageReference Include="BepInEx.Core" Version="6.0.0-be.733" />
+    <PackageReference Include="BepInEx.Unity.IL2CPP" Version="6.0.0-be.*" IncludeAssets="compile" />
+    <PackageReference Include="BepInEx.PluginInfoProps" Version="2.*" />
+    <PackageReference Include="HarmonyX" Version="2.14.0" />
+    <PackageReference Include="MoonSharp" Version="2.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>$(WildSkiesRootDir)\BepInEx\interop\Assembly-CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Code">
+      <HintPath>$(WildSkiesRootDir)\BepInEx\interop\Code.dll</HintPath>
+    </Reference>
+    <Reference Include="Facepunch.Steamworks.Win64">
+      <HintPath>$(WildSkiesRootDir)\BepInEx\interop\Facepunch.Steamworks.Win64.dll</HintPath>
+    </Reference>
+    <Reference Include="Il2Cppmscorlib">
+      <HintPath>$(WildSkiesRootDir)\BepInEx\interop\Il2Cppmscorlib.dll</HintPath>
+    </Reference>
+    <Reference Include="MultiplayerTestFramework">
+      <HintPath>$(WildSkiesRootDir)\BepInEx\interop\MultiplayerTestFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="SharedAssets.Code">
+      <HintPath>$(WildSkiesRootDir)\BepInEx\interop\SharedAssets.Code.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro">
+      <HintPath>$(WildSkiesRootDir)\BepInEx\interop\Unity.TextMeshPro.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine">
+      <HintPath>$(WildSkiesRootDir)\BepInEx\interop\UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>$(WildSkiesRootDir)\BepInEx\interop\UnityEngine.CoreModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.IMGUIModule">
+      <HintPath>$(WildSkiesRootDir)\BepInEx\interop\UnityEngine.IMGUIModule.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Interfaces\" />
+  </ItemGroup>
+
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="copy /Y &quot;$(TargetDir)$(ProjectName).dll&quot; &quot;$(SolutionDir)\publish\$(ProjectName).dll&quot;&#xD;&#xA;copy /Y &quot;$(SolutionDir)\README.md&quot; &quot;$(SolutionDir)\publish\README.md&quot;" />
+  </Target>
+</Project>

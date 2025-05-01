@@ -1,0 +1,9 @@
+{
+  "name": "LostMoon",
+  "version_number": "0.1.0",
+  "website_url": "https://github.com/SvalTek/LostMoon",
+  "description": "Lua runtime for Lost Skies.",
+  "dependencies": [
+    "BepInEx-BepInExPack_IL2CPP-6.0.733"
+  ]
+}
